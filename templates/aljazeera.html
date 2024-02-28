@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Al Jazeera News</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fq784/j6cY/iJTquOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="jumbotron" style="color:black">
+        <h1 style="color:black">Flask Simple News Application</h1>
+    </div>    
+    <div class="container">
+        {% for title, description, image_url in context %}
+        <img src="{{ image_url }}" alt="">
+        <h3>News: </h3>{{ title }}
+        <h4>Description: </h4>{{ description }}
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        {% if pagination %}
+            {{ pagination.links }}
+        {% endif %}
+    </div>    
+    <form action="{{ url_for('search') }}" method="GET">
+        <input type="text" name="query" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>        
+</body>
+</html>
