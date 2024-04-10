@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Viewport meta tag for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
+    <!-- Link to the custom CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <!-- Heading for search results -->
     <h1>Search Results</h1>
-    <ul >
+    <ul>
+        <!-- Loop through each article in the search results -->
         {% for article in articles %}
-            <li >{{ article.title }}</li>
+            <!-- Display the title of each article as a list item -->
+            <li>{{ article.title }}</li>
         {% endfor %}
     </ul>
 </body>

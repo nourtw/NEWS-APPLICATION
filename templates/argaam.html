@@ -11,10 +11,10 @@
         <h1 style="color:black">Flask Simple News Application</h1>
     </div>    
     <div class="container">
-        {% for title, description, image_url in context %}
-        <img src="{{ image_url }}" alt="">
-        <h3>News: </h3>{{ title }}
-        <h4>Description: </h4>{{ description }}
+        {% for article in article_info %}
+            <img src="{{ article['image_url'] }}" alt="">
+            <h3>News: </h3>{{ article['title'] }}
+            <h4>Description: </h4>{{ article['description'] }}
         {% endfor %}
     </div>
     <div class="pagination">
@@ -22,7 +22,7 @@
             {{ pagination.links }}
         {% endif %}
     </div>    
-    <form action="{{ url_for('search') }}" method="GET">
+    <form action="/search" method="GET">
         <input type="text" name="query" placeholder="Search...">
         <button type="submit">Search</button>
     </form>        
