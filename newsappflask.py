@@ -43,22 +43,29 @@ def news(page=1):
 def bbc(page=1):
     source_id = "bbc-news" 
     articles, desc, img = get_articles_from_source(source_id)
+    article_info = [{'title': title, 'description': description, 'image_url': image_url} 
+                    for title, description, image_url in zip(articles, desc, img)]
     pagination = Pagination(page=page, per_page=10, total=len(articles), css_framework='bootstrap4')
-    return render_template('bbc.html', articles=articles, desc=desc, img=img, pagination=pagination)
+    return render_template('bbc.html', article_info=article_info, pagination=pagination)
+
 
 @newsappflask.route('/argaam')
 def argaam(page=1):
     source_id = "argaam" 
     articles, desc, img = get_articles_from_source(source_id)
+    article_info = [{'title': title, 'description': description, 'image_url': image_url} 
+                    for title, description, image_url in zip(articles, desc, img)]
     pagination = Pagination(page=page, per_page=10, total=len(articles), css_framework='bootstrap4')
-    return render_template('argaam.html', articles=articles, desc=desc, img=img, pagination=pagination)
+    return render_template('argaam.html', article_info=article_info, pagination=pagination)
 
 @newsappflask.route('/aljazeera')
 def aljazeera(page=1):
     source_id = "al-jazeera-english"
     articles, desc, img = get_articles_from_source(source_id)
+    article_info = [{'title': title, 'description': description, 'image_url': image_url} 
+                    for title, description, image_url in zip(articles, desc, img)]
     pagination = Pagination(page=page, per_page=10, total=len(articles), css_framework='bootstrap4')
-    return render_template('aljazeera.html', articles=articles, desc=desc, img=img, pagination=pagination)
+    return render_template('aljazeera.html', article_info=article_info, pagination=pagination)
 
 @newsappflask.route('/')
 def index():
